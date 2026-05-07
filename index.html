@@ -7,8 +7,11 @@
     <meta name="keywords" content="diseñador web, freelance, SEO, tiendas online, landing pages, diseño web profesional">
     <meta name="author" content="José Valenzuela">
     <title>José Valenzuela | Diseñador Web Freelance</title>
+    <!-- Favicon (icono en la pestaña del navegador) -->
+    <link rel="icon" type="image/png" href="imagenes/flaticon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,7 +31,6 @@
                 <ul class="nav-list">
                     <li><a href="#home">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
-                 <!--   <li><a href="#sobre-mi">Sobre mí</a></li> -->
                     <li><a href="#beneficios">Beneficios</a></li>
                     <li><a href="#proceso">Proceso</a></li>
                     <li><a href="#faq">FAQ</a></li>
@@ -42,7 +44,8 @@
 
     <main>
         <section id="home" class="hero">
-            <div class="container">
+            <canvas id="particlesCanvas" class="particles-canvas"></canvas>
+            <div class="container hero-content">
                 <h1>Diseño web profesional para empresas y personas que quieren vender más en Internet</h1>
                 <h2 class="hero-h2">¿Tu web no genera clientes? Creamos páginas web optimizadas para convertir visitantes en leads y ventas.</h2>
                 <p class="hero-text">Si tu web actual no aparece en Google, tarda en cargar o no convence a quien la visita, estás perdiendo oportunidades cada día. Yo te ayudo a tener una página web rápida, bonita y pensada para que tus clientes te encuentren y te elijan.</p>
@@ -52,7 +55,7 @@
 
         <section id="servicios" class="servicios">
             <div class="container">
-                <h2 class="section-title">Servicios de diseño web a medida para todo tipo de negocios</h2>
+                <h2 class="section-title typed-title" data-text="Servicios de diseño web a medida para todo tipo de negocios"></h2>
                 <div class="servicios-grid">
                     <div class="service-card"><i class="fas fa-building"></i><h3>Páginas web corporativas</h3><p>Ideal para dar credibilidad y presencia digital a tu empresa. Desde web de 5 páginas hasta 50. Incluye blog, formularios, mapa y sección de servicios. Perfecta para pymes, independientes y profesionales.</p></div>
                     <div class="service-card"><i class="fas fa-chart-line"></i><h3>Landing pages de alta conversión</h3><p>Una sola página diseñada para que el visitante haga una acción: comprar, reservar, suscribirse o pedir información. Velocidad extrema, copy persuasivo y llamadas a la acción estratégicas.</p></div>
@@ -75,7 +78,7 @@
                     <img src="imagenes/foto-jose.jpg" alt="José Valenzuela, diseñador web freelance" loading="lazy">
                 </div>
                 <div class="sobre-texto">
-                    <h2>¿Quién soy?</h2>
+                    <h2 class="typed-title" data-text="¿Quién soy?"></h2>
                     <h3>Soy José Valenzuela: diseñador web con experiencia real y visión de negocio</h3>
                     <p>He dirigido centros de capacitación, coordinado equipos académicos y desarrollado webs para distintos sectores. Con más de 20 años de experiencia —empecé como instructor de informática y luego fui gerente en Panamá y Colombia— aprendí que una web no es solo diseño bonito: es una herramienta de venta disponible 24/7, que debe funcionar con seriedad y sin fallos. Esa visión gerencial y de negocio es lo que me diferencia de un simple técnico que maqueta páginas.</p>
                     <p>Hoy, como diseñador web freelance, ofrezco algo que pocos pueden presumir: cumplo plazos y presupuestos (gracias a mi experiencia gerencial), te explico con claridad cómo manejar tu web (por mi faceta docente), y tengo capacidad técnica real: diseño responsive, velocidad, SEO on page y tiendas online funcionales. Si buscas a alguien que solo programe, hay miles. Si buscas a un profesional con oficio, historia y compromiso, hablemos.</p>
@@ -85,11 +88,11 @@
 
         <section id="beneficios" class="beneficios">
             <div class="container">
-                <h2 class="section-title">¿Por qué elegirme como tu diseñador web?</h2>
+                <h2 class="section-title typed-title" data-text="¿Por qué elegirme como tu diseñador web?"></h2>
                 <div class="beneficios-grid">
                     <div class="beneficio-card"><i class="fas fa-rocket"></i><h3>Webs rápidas y seguras</h3><p>Uso hosting optimizado, caché y buenas prácticas. Tu web cargará muy rápido. Google lo premia, tus usuarios lo agradecen.</p></div>
                     <div class="beneficio-card"><i class="fas fa-mobile-alt"></i><h3>Diseño responsive adaptado a móviles</h3><p>Más del 60% del tráfico viene de dispositivos móviles. Tu web se verá perfecta en cualquier dispositivo.</p></div>
-                    <div class="beneficio-card"><i class="fas fa-chart-simple"></i><h3>Estructura pensada para SEO desde el primer día</h3><p>Etiquetas H1, H2, metas, URLs amigables, texto semántico. No es un extra, es parte del diseño.</p></div>
+                    <div class="beneficio-card"><i class="fas fa-chart-line"></i><h3>Estructura pensada para SEO desde el primer día</h3><p>Etiquetas H1, H2, metas, URLs amigables, texto semántico. No es un extra, es parte del diseño.</p></div>
                     <div class="beneficio-card"><i class="fab fa-wordpress"></i><h3>Fácil de gestionar por ti mismo</h3><p>Usamos WordPress con editor visual. Añadir productos, cambiar textos o subir un post es tan sencillo como usar un documento de Word.</p></div>
                     <div class="beneficio-card"><i class="fas fa-headset"></i><h3>Soporte y formación incluida</h3><p>Te grabo tutoriales personalizados y resuelvo dudas sin límite durante el primer mes. No te dejaré solo después de lanzar la web.</p></div>
                 </div>
@@ -98,7 +101,7 @@
 
         <section id="proceso" class="proceso">
             <div class="container">
-                <h2 class="section-title">Cómo trabajamos: tu nueva web en 4 pasos sencillos</h2>
+                <h2 class="section-title typed-title" data-text="Cómo trabajamos: tu nueva web en 4 pasos sencillos"></h2>
                 <div class="proceso-grid">
                     <div class="paso"><i class="fas fa-comments"></i><h3>1. Briefing y estrategia</h3><p>Hablamos de tu negocio, tus clientes y tus objetivos. Analizo a tu competencia y defino las palabras clave que usaré en el texto y la estructura.</p></div>
                     <div class="paso"><i class="fas fa-pen-ruler"></i><h3>2. Diseño y maquetación</h3><p>Creo un prototipo (boceto) de tu web. Te lo enseño, lo revisamos juntos y ajustamos colores, fuentes y distribución hasta que te enamores del diseño.</p></div>
@@ -110,7 +113,7 @@
 
         <section id="faq" class="faq">
             <div class="container">
-                <h2 class="section-title">Preguntas frecuentes sobre diseño web profesional</h2>
+                <h2 class="section-title typed-title" data-text="Preguntas frecuentes sobre diseño web profesional"></h2>
                 <div class="faq-list" id="faqList">
                     <div class="faq-item"><h3 class="faq-question">¿Cuánto cuesta una página web profesional?</h3><div class="faq-answer"><p>El precio depende del número de páginas, funcionalidades, y demás detalles que necesite tu sitio web, diseño webs desde $1.000.000 COP / $280 USD. Solicita presupuesto sin compromiso y te doy un precio exacto para tu proyecto.</p></div></div>
                     <div class="faq-item"><h3 class="faq-question">¿Cuánto tiempo tarda en estar lista mi web?</h3><div class="faq-answer"><p>Una web sencilla: 2-3 semanas. Una tienda online o proyecto a medida: 4-6 semanas. El plazo real depende de que me entregues los contenidos (textos, fotos) rápido.</p></div></div>
@@ -124,7 +127,7 @@
 
         <section id="portafolio" class="portafolio">
             <div class="container">
-                <h2 class="section-title">Portfolio de páginas web diseñadas para vender más</h2>
+                <h2 class="section-title typed-title" data-text="Portfolio de páginas web diseñadas para vender más"></h2>
                 <p class="subtexto">Estos son algunos de los proyectos que he desarrollado para empresas de distintos sectores. Cada web está diseñada a medida, con foco en la conversión y el SEO.</p>
                 <div class="portfolio-grid" id="portfolioGrid"></div>
             </div>
@@ -132,7 +135,7 @@
 
         <section id="presupuesto" class="final-cta">
             <div class="container">
-                <h2>¿Hablamos de tu proyecto web? Solicita un presupuesto sin compromiso</h2>
+                <h2 class="typed-title" data-text="¿Hablamos de tu proyecto web? Solicita un presupuesto sin compromiso"></h2>
                 <p>Cuéntame qué tipo de web necesitas y te responderé en menos de 24 horas con un presupuesto adaptado a tu negocio.</p>
                 <a href="https://api.whatsapp.com/send?phone=+573233644603&text=Buen%20d%C3%ADa,%20necesito%20informaci%C3%B3n%20de%20sus%20servicios" target="_blank" class="btn btn-secondary"><i class="fab fa-whatsapp"></i> Quiero mi presupuesto</a>
             </div>
@@ -156,7 +159,8 @@
             </div>
         </div>
         <div class="copyright">
-            <p>© 2025 José Valenzuela - Diseñador Web Freelance</p>
+            <p>© 2026 José Valenzuela - Diseñador Web Freelance</p>
+            <p class="hecho-con-amor">Hecho con amor <i class="fas fa-heart" style="color: #ff3366;"></i> desde Colombia</p>
         </div>
     </footer>
 
