@@ -7,7 +7,6 @@
     <meta name="keywords" content="diseñador web, freelance, SEO, tiendas online, landing pages, diseño web profesional">
     <meta name="author" content="José Valenzuela">
     <title>José Valenzuela | Diseñador Web Freelance</title>
-    <!-- Favicon (icono en la pestaña del navegador) -->
     <link rel="icon" type="image/png" href="imagenes/flaticon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -18,11 +17,7 @@
     <header class="header">
         <div class="container header-container">
             <div class="logo-area">
-                <div class="logo-circle">JV</div>
-                <div class="logo-text">
-                    <span class="logo-name">JOSE VALENZUELA</span>
-                    <span class="logo-sub">Diseñador Web Freelance</span>
-                </div>
+                <img src="imagenes/logo-web.png" alt="José Valenzuela - Diseñador Web Freelance" class="logo-img">
             </div>
             <button class="menu-toggle" id="menuToggle" aria-label="Menú">
                 <i class="fas fa-bars"></i>
@@ -35,6 +30,7 @@
                     <li><a href="#proceso">Proceso</a></li>
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="#portafolio">Portafolio</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
                     <li><a href="#presupuesto">Presupuesto</a></li>
                 </ul>
                 <a href="https://api.whatsapp.com/send?phone=+573233644603&text=Buen%20d%C3%ADa,%20necesito%20informaci%C3%B3n%20de%20sus%20servicios" target="_blank" rel="noopener noreferrer" class="cta-wsp-header"><i class="fab fa-whatsapp"></i> SOLICITA PRESUPUESTO</a>
@@ -43,16 +39,18 @@
     </header>
 
     <main>
+        <!-- Hero -->
         <section id="home" class="hero">
             <canvas id="particlesCanvas" class="particles-canvas"></canvas>
             <div class="container hero-content">
-                <h1>Diseño web profesional para empresas y personas que quieren vender más en Internet</h1>
-                <h2 class="hero-h2">¿Tu web no genera clientes? Creamos páginas web optimizadas para convertir visitantes en leads y ventas.</h2>
-                <p class="hero-text">Si tu web actual no aparece en Google, tarda en cargar o no convence a quien la visita, estás perdiendo oportunidades cada día. Yo te ayudo a tener una página web rápida, bonita y pensada para que tus clientes te encuentren y te elijan.</p>
+                <h1 class="animate-h1">Diseño web profesional para empresas y personas que quieren vender más en Internet</h1>
+                <h2 class="hero-h2 animate-h2">¿Tu web no genera clientes? Creamos páginas web optimizadas para convertir visitantes en leads y ventas.</h2>
+                <p class="hero-text animate-p">Si tu web actual no aparece en Google, tarda en cargar o no convence a quien la visita, estás perdiendo oportunidades cada día. Yo te ayudo a tener una página web rápida, bonita y pensada para que tus clientes te encuentren y te elijan.</p>
                 <a href="https://api.whatsapp.com/send?phone=+573233644603&text=Buen%20d%C3%ADa,%20necesito%20informaci%C3%B3n%20de%20sus%20servicios" target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Solicita tu presupuesto gratis</a>
             </div>
         </section>
 
+        <!-- Servicios -->
         <section id="servicios" class="servicios">
             <div class="container">
                 <h2 class="section-title typed-title" data-text="Servicios de diseño web a medida para todo tipo de negocios"></h2>
@@ -72,6 +70,7 @@
             </div>
         </section>
 
+        <!-- Sobre mí -->
         <section id="sobre-mi" class="sobre-mi">
             <div class="container sobre-container">
                 <div class="sobre-img">
@@ -86,6 +85,7 @@
             </div>
         </section>
 
+        <!-- Beneficios -->
         <section id="beneficios" class="beneficios">
             <div class="container">
                 <h2 class="section-title typed-title" data-text="¿Por qué elegirme como tu diseñador web?"></h2>
@@ -99,6 +99,7 @@
             </div>
         </section>
 
+        <!-- Proceso -->
         <section id="proceso" class="proceso">
             <div class="container">
                 <h2 class="section-title typed-title" data-text="Cómo trabajamos: tu nueva web en 4 pasos sencillos"></h2>
@@ -111,6 +112,7 @@
             </div>
         </section>
 
+        <!-- FAQ -->
         <section id="faq" class="faq">
             <div class="container">
                 <h2 class="section-title typed-title" data-text="Preguntas frecuentes sobre diseño web profesional"></h2>
@@ -125,6 +127,7 @@
             </div>
         </section>
 
+        <!-- Portafolio -->
         <section id="portafolio" class="portafolio">
             <div class="container">
                 <h2 class="section-title typed-title" data-text="Portfolio de páginas web diseñadas para vender más"></h2>
@@ -133,6 +136,58 @@
             </div>
         </section>
 
+        <!-- Testimonios (cuadrícula estática) -->
+        <section id="testimonios" class="testimonios">
+            <div class="container">
+                <h2 class="section-title typed-title" data-text="Lo que dicen nuestros clientes"></h2>
+                <div class="testimonios-grid">
+                    <div class="testimonial-card">
+                        <img src="imagenes/andrea-mesias.jpg" alt="Andrea Mesías" class="testimonial-img" onerror="this.src='https://placehold.co/100x100?text=No+img'">
+                        <div class="testimonial-text">"Muy agradecida con el Ing. Valenzuela, quien me diseñó mi web de SELCA, para mi instituto de aprendizaje."</div>
+                        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="testimonial-name">Andrea Mesías</div>
+                        <div class="testimonial-role">CEO SELCA</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="imagenes/andrea-pachon.jpg" alt="Andrea Pachón" class="testimonial-img" onerror="this.src='https://placehold.co/100x100?text=No+img'">
+                        <div class="testimonial-text">"El Ing. José Valenzuela nos diseñó la web para nuestra oficina de Contaduría, ha sido un logro muy grande, la página ha quedado muy bella y funcional."</div>
+                        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="testimonial-name">Andrea Pachón</div>
+                        <div class="testimonial-role">CEO AP SERVICIOS CONTABLES</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="imagenes/dominic-fabian-wolf.jpg" alt="Dominic Fabian Wolf" class="testimonial-img" onerror="this.src='https://placehold.co/100x100?text=No+img'">
+                        <div class="testimonial-text">"El Sr. Valenzuela me ha creado una web para mi fundación, llamada Fundación Dominic, muy agradecido por su enorme colaboración."</div>
+                        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="testimonial-name">Dominic Fabian Wolf</div>
+                        <div class="testimonial-role">Director Fundación Dominic</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="imagenes/maria-paula-trujillo.jpg" alt="María Paula Trujillo" class="testimonial-img" onerror="this.src='https://placehold.co/100x100?text=No+img'">
+                        <div class="testimonial-text">"José nos creó un E-commerce, ha quedado brutal, ha sido algo maravilloso el desarrollo de nuestra web, ya que gracias a esto, hemos podido tener nuestra tienda en línea."</div>
+                        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="testimonial-name">María Paula Trujillo</div>
+                        <div class="testimonial-role">CEO HOBBY IN A BOX</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="imagenes/pastorino.jpg" alt="Jorge Pastorino" class="testimonial-img" onerror="this.src='https://placehold.co/100x100?text=No+img'">
+                        <div class="testimonial-text">"Tengo mi web desde hace ya más de 5 años, el Ing. Valenzuela nos ha diseñado este sitio para mi venta de repuestos a nivel nacional en Panamá, muy bueno, excelente sus servicios."</div>
+                        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="testimonial-name">Jorge Pastorino</div>
+                        <div class="testimonial-role">CEO REPUESTOS ALTERNATIVOS</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="imagenes/hugo.jpg" alt="Hugo García" class="testimonial-img" onerror="this.src='https://placehold.co/100x100?text=No+img'">
+                        <div class="testimonial-text">"Agradecido con el Sr. Valenzuela, quien fue la persona que me diseñó la web para mi empresa, HG Administración y Construcción, en Panamá."</div>
+                        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="testimonial-name">Hugo García</div>
+                        <div class="testimonial-role">CEO HG Construcción</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA final -->
         <section id="presupuesto" class="final-cta">
             <div class="container">
                 <h2 class="typed-title" data-text="¿Hablamos de tu proyecto web? Solicita un presupuesto sin compromiso"></h2>
@@ -160,7 +215,7 @@
         </div>
         <div class="copyright">
             <p>© 2026 José Valenzuela - Diseñador Web Freelance</p>
-            <p class="hecho-con-amor">Hecho con amor <i class="fas fa-heart" style="color: #ff3366;"></i> desde Colombia</p>
+            <p class="hecho-con-amor">Hecho con <i class="fas fa-heart" style="color: #ff3366;"></i> desde Colombia</p>
         </div>
     </footer>
 

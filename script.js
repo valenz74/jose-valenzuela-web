@@ -1,4 +1,4 @@
-// ========== SISTEMA DE PARTÍCULAS ==========
+// ===== PARTÍCULAS =====
 class ParticleSystem {
     constructor(canvas) {
         this.canvas = canvas;
@@ -38,13 +38,9 @@ class ParticleSystem {
                 speedX: (Math.random() - 0.5) * 0.5,
                 speedY: (Math.random() - 0.5) * 0.5,
                 opacity: Math.random() * 0.6 + 0.2,
-                color: this.getRandomColor()
+                color: ['#ffffff', '#aaccff', '#88aaff', '#cce4ff', '#ffffff'][Math.floor(Math.random() * 5)]
             });
         }
-    }
-    getRandomColor() {
-        const colors = ['#ffffff', '#aaccff', '#88aaff', '#cce4ff', '#ffffff'];
-        return colors[Math.floor(Math.random() * colors.length)];
     }
     update() {
         for (let p of this.particles) {
@@ -76,11 +72,6 @@ class ParticleSystem {
         this.draw();
         this.animationId = requestAnimationFrame(() => this.animate());
     }
-    destroy() {
-        if (this.animationId) cancelAnimationFrame(this.animationId);
-        if (this.resizeObserver) this.resizeObserver.disconnect();
-        window.removeEventListener('resize', () => this.resizeCanvas());
-    }
 }
 let particleSystem = null;
 document.addEventListener('DOMContentLoaded', () => {
@@ -90,23 +81,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// ===== FUNCIONES PRINCIPALES =====
 document.addEventListener('DOMContentLoaded', () => {
-    // Menú, FAQ, Typed, etc. (sin cambios relevantes)
+    // Menú hamburguesa
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
     if (menuToggle) {
         menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-        document.querySelectorAll('.nav-list a').forEach(link => link.addEventListener('click', () => navMenu.classList.remove('active')));
+        document.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', () => navMenu.classList.remove('active'));
+        });
     }
+
+    // FAQ acordeón
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
         const q = item.querySelector('.faq-question');
-        if (q) q.addEventListener('click', () => {
-            const active = item.classList.contains('active');
-            faqItems.forEach(i => i.classList.remove('active'));
-            if (!active) item.classList.add('active');
-        });
+        if (q) {
+            q.addEventListener('click', () => {
+                const active = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!active) item.classList.add('active');
+            });
+        }
     });
+
+    // Typed.js en títulos
     const typedElements = document.querySelectorAll('.typed-title');
     const typedInstances = new Map();
     const observerTitles = new IntersectionObserver((entries) => {
@@ -115,7 +115,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const el = entry.target;
                 const text = el.getAttribute('data-text');
                 if (text && !typedInstances.has(el)) {
-                    const typed = new Typed(el, { strings: [text], typeSpeed: 50, backSpeed: 0, startDelay: 200, loop: false, showCursor: false });
+                    const typed = new Typed(el, {
+                        strings: [text],
+                        typeSpeed: 50,
+                        backSpeed: 0,
+                        startDelay: 200,
+                        loop: false,
+                        showCursor: false
+                    });
                     typedInstances.set(el, typed);
                     observerTitles.unobserve(el);
                 }
@@ -123,7 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.5 });
     typedElements.forEach(el => observerTitles.observe(el));
-    const animatedElements = document.querySelectorAll('.service-card, .beneficio-card, .paso, .portfolio-card');
+
+    // Animación de entrada para tarjetas y testimonios
+    const animatedElements = document.querySelectorAll('.service-card, .beneficio-card, .paso, .portfolio-card, .testimonial-card');
     const observerReveal = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -134,138 +143,122 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
     animatedElements.forEach(el => observerReveal.observe(el));
 
-    // ========== PORTAFOLIO CON CREACIÓN FORZADA Y ESTILOS INLINE ==========
+    // ===== PORTAFOLIO =====
     const proyectos = [
-        { nombre: "Repuestos Alternativos", imagenes: ["imagenes/ralternativos1.jpg","imagenes/ralternativos2.jpg","imagenes/ralternativos3.jpg","imagenes/ralternativos4.jpg","imagenes/ralternativos5.jpg","imagenes/ralternativos6.jpg"] },
-        { nombre: "Aprueba Xtreme", imagenes: ["imagenes/plataforma-formacion1.jpg","imagenes/plataforma-formacion2.jpg","imagenes/plataforma-formacion3.jpg","imagenes/plataforma-formacion4.jpg","imagenes/plataforma-formacion5.jpg","imagenes/plataforma-formacion6.jpg"] },
-        { nombre: "Academia Aprueba", imagenes: ["imagenes/aprueba1.jpg","imagenes/aprueba2.jpg","imagenes/aprueba3.jpg","imagenes/aprueba4.jpg","imagenes/aprueba5.jpg"] }
+        { nombre: "Virtual Academy Panamá", imagenes: Array.from({ length: 11 }, (_, i) => `imagenes/academia${i+1}.jpg`) },
+        { nombre: "Elite Core", imagenes: Array.from({ length: 12 }, (_, i) => `imagenes/gimnasio${i+1}.jpg`) },
+        { nombre: "Aurelia", imagenes: Array.from({ length: 11 }, (_, i) => `imagenes/joya${i+1}.jpg`) },
+        { nombre: "Repuestos Alternativos", imagenes: [ "imagenes/ralternativos1.jpg", "imagenes/ralternativos2.jpg", "imagenes/ralternativos3.jpg", "imagenes/ralternativos4.jpg", "imagenes/ralternativos5.jpg", "imagenes/ralternativos6.jpg" ] },
+        { nombre: "Aprueba Xtreme", imagenes: [ "imagenes/plataforma-formacion1.jpg", "imagenes/plataforma-formacion2.jpg", "imagenes/plataforma-formacion3.jpg", "imagenes/plataforma-formacion4.jpg", "imagenes/plataforma-formacion5.jpg", "imagenes/plataforma-formacion6.jpg" ] },
+        { nombre: "Academia Aprueba", imagenes: [ "imagenes/aprueba1.jpg", "imagenes/aprueba2.jpg", "imagenes/aprueba3.jpg", "imagenes/aprueba4.jpg", "imagenes/aprueba5.jpg" ] }
     ];
-
+    const portfolioGrid = document.getElementById('portfolioGrid');
     function renderPortfolio() {
-        let grid = document.getElementById('portfolioGrid');
-        if (!grid) {
-            const container = document.querySelector('.portafolio .container');
-            if (container) {
-                grid = document.createElement('div');
-                grid.id = 'portfolioGrid';
-                grid.className = 'portfolio-grid';
-                container.appendChild(grid);
-            } else return;
-        }
-        // Forzar estilos inline
-        grid.style.display = 'grid';
-        grid.style.visibility = 'visible';
-        grid.style.opacity = '1';
-        grid.style.minHeight = '200px';
-        grid.innerHTML = '';
-        proyectos.forEach((p, idx) => {
+        if (!portfolioGrid) return;
+        portfolioGrid.innerHTML = '';
+        proyectos.forEach((proy, idx) => {
             const card = document.createElement('div');
             card.className = 'portfolio-card';
-            card.style.display = 'block';
-            card.style.visibility = 'visible';
-            card.style.opacity = '1';
             card.innerHTML = `
-                <img src="${p.imagenes[0]}" class="portfolio-img" onerror="this.src='https://placehold.co/400x300?text=Imagen+no+disponible'">
-                <h3>${p.nombre}</h3>
+                <img src="${proy.imagenes[0]}" class="portfolio-img" onerror="this.src='https://placehold.co/400x300?text=Imagen+no+disponible'">
+                <h3>${proy.nombre}</h3>
                 <p>Proyecto web profesional, diseño conversivo.</p>
                 <button class="portfolio-btn" data-proyecto="${idx}">Ver proyecto</button>
             `;
-            grid.appendChild(card);
+            portfolioGrid.appendChild(card);
         });
         document.querySelectorAll('.portfolio-btn').forEach(btn => {
-            btn.removeEventListener('click', portfolioHandler);
-            btn.addEventListener('click', portfolioHandler);
+            btn.addEventListener('click', (e) => {
+                const idx = e.currentTarget.getAttribute('data-proyecto');
+                if (idx !== null && proyectos[idx]) abrirPopupGaleria(proyectos[idx].imagenes, proyectos[idx].nombre);
+            });
         });
-        console.log("Portafolio renderizado. Grid visible:", grid.offsetHeight > 0);
     }
-
-    function portfolioHandler(e) {
-        const idx = e.currentTarget.getAttribute('data-proyecto');
-        if (idx && proyectos[idx]) abrirPopupGaleria(proyectos[idx].imagenes, proyectos[idx].nombre);
-    }
-
     function abrirPopupGaleria(imagenes, titulo) {
         const overlay = document.createElement('div');
         overlay.className = 'popup-overlay';
-        const popup = document.createElement('div');
-        popup.className = 'popup-container';
-        popup.innerHTML = `<button class="popup-close">&times;</button><h3>${titulo}</h3><div class="popup-gallery"></div>`;
-        const gallery = popup.querySelector('.popup-gallery');
+        const popupDiv = document.createElement('div');
+        popupDiv.className = 'popup-container';
+        popupDiv.innerHTML = `<button class="popup-close">&times;</button><h3>${titulo}</h3><div class="popup-gallery"></div>`;
+        const gallery = popupDiv.querySelector('.popup-gallery');
         imagenes.forEach((url, i) => {
             const img = document.createElement('img');
             img.src = url;
-            img.className = 'gallery-thumb';
-            img.onerror = () => img.src = 'https://placehold.co/400x300';
+            img.classList.add('gallery-thumb');
+            img.onerror = () => img.src = 'https://placehold.co/400x300?text=Sin+imagen';
             img.addEventListener('click', (e) => { e.stopPropagation(); abrirLightbox(imagenes, i); });
             gallery.appendChild(img);
         });
-        overlay.appendChild(popup);
+        overlay.appendChild(popupDiv);
         document.body.appendChild(overlay);
-        popup.querySelector('.popup-close').onclick = () => overlay.remove();
-        overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+        popupDiv.querySelector('.popup-close').addEventListener('click', () => overlay.remove());
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
     }
-
-    function abrirLightbox(imagenes, actual) {
+    function abrirLightbox(imagenes, index) {
         const overlay = document.createElement('div');
         overlay.className = 'lightbox-overlay';
         const container = document.createElement('div');
         container.className = 'lightbox-container';
         const img = document.createElement('img');
         img.className = 'lightbox-img';
-        const update = (idx) => {
+        let current = index;
+        function update(idx) {
             let newIdx = idx;
             if (newIdx < 0) newIdx = imagenes.length - 1;
             if (newIdx >= imagenes.length) newIdx = 0;
             img.src = imagenes[newIdx];
             return newIdx;
-        };
-        let current = update(actual);
+        }
+        img.src = imagenes[current];
+        img.onerror = () => img.src = 'https://placehold.co/800x600?text=No+disponible';
         const close = document.createElement('button');
-        close.innerHTML = '&times;';
-        close.className = 'lightbox-close';
+        close.innerHTML = '&times;'; close.className = 'lightbox-close';
         close.onclick = () => overlay.remove();
         const prev = document.createElement('button');
-        prev.innerHTML = '&#10094;';
-        prev.className = 'lightbox-prev';
+        prev.innerHTML = '&#10094;'; prev.className = 'lightbox-prev';
         prev.onclick = () => { current = update(current - 1); };
         const next = document.createElement('button');
-        next.innerHTML = '&#10095;';
-        next.className = 'lightbox-next';
+        next.innerHTML = '&#10095;'; next.className = 'lightbox-next';
         next.onclick = () => { current = update(current + 1); };
         container.append(img, close, prev, next);
         overlay.appendChild(container);
         document.body.appendChild(overlay);
         overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
     }
-
     renderPortfolio();
-    setTimeout(renderPortfolio, 300);
-    setTimeout(renderPortfolio, 800);
 
-    // Cookies, scroll, etc.
-    const banner = document.getElementById('cookieBanner');
-    const accept = document.getElementById('acceptCookies');
-    const reject = document.getElementById('rejectCookies');
-    if (banner) {
-        if (localStorage.getItem('cookieConsent')) banner.style.display = 'none';
-        else banner.style.display = 'flex';
-        accept?.addEventListener('click', () => { localStorage.setItem('cookieConsent', 'accepted'); banner.style.display = 'none'; });
-        reject?.addEventListener('click', () => { localStorage.setItem('cookieConsent', 'rejected'); banner.style.display = 'none'; });
+    // ===== COOKIES =====
+    const cookiesBanner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('acceptCookies');
+    const rejectBtn = document.getElementById('rejectCookies');
+    if (cookiesBanner) {
+        if (localStorage.getItem('cookieConsent')) cookiesBanner.style.display = 'none';
+        else cookiesBanner.style.display = 'flex';
+        acceptBtn?.addEventListener('click', () => { localStorage.setItem('cookieConsent', 'accepted'); cookiesBanner.style.display = 'none'; });
+        rejectBtn?.addEventListener('click', () => { localStorage.setItem('cookieConsent', 'rejected'); cookiesBanner.style.display = 'none'; });
     }
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', function(e) {
-            const id = this.getAttribute('href');
-            if (id === '#') return;
-            const target = document.querySelector(id);
-            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+
+    // ===== SMOOTH SCROLL Y BOTÓN SCROLL TOP =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === "#") return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
-    const topBtn = document.getElementById('scrollTopBtn');
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
     window.addEventListener('scroll', () => {
-        if (topBtn) (window.scrollY > 300) ? topBtn.classList.add('show') : topBtn.classList.remove('show');
+        if (scrollTopBtn) {
+            if (window.scrollY > 300) scrollTopBtn.classList.add('show');
+            else scrollTopBtn.classList.remove('show');
+        }
         const header = document.querySelector('.header');
         if (window.scrollY > 20) header.style.boxShadow = '0 8px 25px rgba(0,0,0,0.2)';
         else header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
     });
-    topBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 });
